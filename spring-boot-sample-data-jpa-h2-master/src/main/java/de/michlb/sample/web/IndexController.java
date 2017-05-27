@@ -41,6 +41,8 @@ public class IndexController {
     private CourseService CS ;
 
 
+    @Autowired
+    private PreService PreS ;
 
     @Autowired
     private ProfService PS ;
@@ -950,6 +952,9 @@ public class IndexController {
 
         temp.addObject( "Course" , list ) ;
 
+        Iterable<Pre> pre = PreS.FindAll() ;
+
+        temp.addObject( "Pre" , pre ) ;
 
         temp.setViewName("DefineLesson");
         return temp ;
@@ -1003,6 +1008,10 @@ public class IndexController {
         CS.Save( t) ;
 
         Iterable<Course> list = CS.FindAll() ;
+
+        Iterable<Pre> pre = PreS.FindAll() ;
+
+        temp.addObject( "Pre" , pre ) ;
 
         temp.addObject( "Course" , list ) ;
 
@@ -1086,6 +1095,10 @@ public class IndexController {
 
         temp.addObject( "Course" , list ) ;
 
+        Iterable<Pre> pre = PreS.FindAll() ;
+
+        temp.addObject( "Pre" , pre ) ;
+
         temp.setViewName("DefineLesson");
         return temp ;
 
@@ -1093,6 +1106,72 @@ public class IndexController {
     }
 
 
+
+    @RequestMapping( value = "/AddPre" ,method = RequestMethod.POST )
+    public ModelAndView AdminAddPre( ModelAndView mav  , HttpSession httpSession ,
+                                         @RequestParam("Code") Integer  Code ,
+                                         @RequestParam("PreCode") Integer  PreCode  )
+    {
+
+        ModelAndView temp = new ModelAndView() ;
+
+        if( httpSession == null )
+        {
+            temp.setViewName("redirect:/Admin");
+            return temp ;
+        }
+
+        Integer A = ( (Integer ) httpSession.getAttribute("Username") ) ;
+        String B = (String )httpSession.getAttribute("Type") ;
+
+
+
+        if ( A == null && B == null  )
+        {
+            temp.setViewName("redirect:/Admin");
+            return temp ;
+        }
+
+        if (  !(  B.equals("Admin")  )   )
+        {
+            temp.setViewName("redirect:/Admin");
+            return temp ;
+        }
+
+
+
+
+
+        Iterable<Course> list = CS.FindAll() ;
+
+
+
+
+        Pre p = new Pre() ;
+
+        Course Asli = CS.FindOne( Code );
+
+        Course Pish = CS.FindOne( PreCode) ;
+
+        if ( Asli != null && Pish != null )
+        {
+            p.setCourseID( Asli);
+            p.setPreRequireID( Pish);
+            PreS.Save( p );
+        }
+
+
+        Iterable<Pre> pre = PreS.FindAll() ;
+
+        temp.addObject( "Pre" , pre ) ;
+
+        temp.addObject( "Course" , list ) ;
+
+        temp.setViewName("DefineLesson");
+        return temp ;
+
+//update_profile   prof_score   DefLess
+    }
 
     @RequestMapping( value = "/DeleteLess" ,method = RequestMethod.POST )
     public ModelAndView AdminDeleteLess( ModelAndView mav  , HttpSession httpSession ,
@@ -1137,6 +1216,69 @@ public class IndexController {
 
 
         Iterable<Course> list = CS.FindAll() ;
+
+
+        Iterable<Pre> pre = PreS.FindAll() ;
+
+        temp.addObject( "Pre" , pre ) ;
+
+        temp.addObject( "Course" , list ) ;
+
+        temp.setViewName("DefineLesson");
+        return temp ;
+
+//update_profile   prof_score   DefLess
+    }
+
+
+    @RequestMapping( value = "/DeletePre" ,method = RequestMethod.POST )
+    public ModelAndView AdminDeletePre( ModelAndView mav  , HttpSession httpSession ,
+                                         @RequestParam("Code") Integer  Code)
+    {
+
+        ModelAndView temp = new ModelAndView() ;
+
+        if( httpSession == null )
+        {
+            temp.setViewName("redirect:/Admin");
+            return temp ;
+        }
+
+        Integer A = ( (Integer ) httpSession.getAttribute("Username") ) ;
+        String B = (String )httpSession.getAttribute("Type") ;
+
+
+
+        if ( A == null && B == null  )
+        {
+            temp.setViewName("redirect:/Admin");
+            return temp ;
+        }
+
+        if (  !(  B.equals("Admin")  )   )
+        {
+            temp.setViewName("redirect:/Admin");
+            return temp ;
+        }
+
+
+
+
+
+        Iterable<Course> list = CS.FindAll() ;
+
+
+        Pre p = PreS.FindOne( Code ) ;
+
+        if ( p != null )
+        {
+            PreS.Delete(p );
+        }
+
+
+        Iterable<Pre> pre = PreS.FindAll() ;
+
+        temp.addObject( "Pre" , pre ) ;
 
         temp.addObject( "Course" , list ) ;
 

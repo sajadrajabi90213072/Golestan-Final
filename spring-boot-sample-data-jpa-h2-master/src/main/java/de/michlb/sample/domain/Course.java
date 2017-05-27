@@ -49,6 +49,10 @@ public class Course implements Serializable {
     private String courseType;
     @Column(name = "CourseGroup")
     private String courseGroup;
+
+    @Column(name = "CourseTime")
+    private String courseTime;
+
     @OneToMany(mappedBy = "courseID")
     private List<Pre> preList;
     @OneToMany(mappedBy = "preRequireID")

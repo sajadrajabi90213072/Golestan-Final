@@ -316,7 +316,69 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12">
 
+                            <!-- BEGIN SAMPLE TABLE PORTLET-->
+                            <div class="portlet box green">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-cogs"></i> جدول پیش نیاز  </div>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="collapse"> </a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                        <a href="javascript:;" class="reload"> </a>
+
+                                    </div>
+                                </div>
+                                <div class="portlet-body flip-scroll">
+                                    <table class="table table-bordered table-striped table-condensed flip-content">
+                                        <thead class="flip-content">
+                                        <tr>
+
+                                            <th class="numeric"> کد انتخابی </th>
+                                            <th width="20%"> کد درس اصلی </th>
+                                            <th>   نام درس اصلی </th>
+                                            <th class="numeric"> کد درس پیش نیاز </th>
+                                            <th class="numeric"> نام درس پیش نیاز  </th>
+
+
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <c:forEach var="sel2" items="${Pre}">
+                                            <tr>
+                                                <td> <c:out value="${sel2.id}"/> </td>
+                                                <td> <c:out value="${sel2.courseID.courseID}"/> </td>
+                                                <td> <c:out value="${sel2.courseID.courseName}"/> </td>
+                                                <td> <c:out value="${sel2.preRequireID.courseID}"/> </td>
+                                                <td> <c:out value="${sel2.preRequireID.courseName}"/> </td>
+
+
+                                            </tr>
+                                        </c:forEach>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- END SAMPLE TABLE PORTLET-->
+                            <!-- BEGIN SAMPLE TABLE PORTLET-->
+
+                            <!-- END SAMPLE TABLE PORTLET-->
+                            <!-- BEGIN SAMPLE TABLE PORTLET-->
+
+                            <!-- END SAMPLE TABLE PORTLET-->
+                            <!-- BEGIN SAMPLE TABLE PORTLET-->
+
+                            <!-- END SAMPLE TABLE PORTLET-->
+                            <!-- BEGIN SAMPLE TABLE PORTLET-->
+
+                            <!-- END SAMPLE TABLE PORTLET-->
+                        </div>
+                    </div>
 
                     <div class="row">
                             
@@ -693,6 +755,194 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <!--/row-->
 
                                             <!--/row-->
+                                        </div>
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-offset-3 col-md-9">
+                                                            <button type="submit" class="btn green">ارسال</button>
+                                                            <button type="button" class="btn default">لغو</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6"> </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- END FORM-->
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+
+
+                            <div class="portlet light bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-equalizer font-red-sunglo"></i>
+                                                    <span class="caption-subject font-red-sunglo bold uppercase">فرم
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                        <a href="" class="reload"> </a>
+                                        <!-- <a href="" class="remove"> </a> -->
+                                    </div>
+                                </div>
+                                <div class="portlet-body form">
+                                    <!-- BEGIN FORM-->
+                                    <form action="/AddPre" method="post" class="form-horizontal">
+                                        <div class="form-body">
+                                            <h3 class="form-section" style="font-family: 'nasim'">فرم افزودن پیش نیاز</h3>
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3"> کد درس اصلی </label>
+                                                        <div class="col-md-9">
+                                                            <input name="Code" type="number" class="form-control" placeholder="کد درس اصلی">
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+
+                                                        <label class="control-label col-md-3"> کد درس پیش نیاز</label>
+                                                        <div class="col-md-9">
+                                                            <input name="PreCode" type="text" class="form-control" placeholder="کد درس پیش نیاز" >
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                            </div>
+
+
+
+                                            <%--<div class="row">--%>
+                                            <%--<div class="col-md-6">--%>
+                                            <%--<div class="form-group">--%>
+                                            <%--<label class="control-label col-md-3"> سال</label>--%>
+                                            <%--<div class="col-md-9">--%>
+                                            <%--<input type="text" class="form-control" placeholder="سال" disabled>--%>
+
+                                            <%--</div>--%>
+
+                                            <%--</div>--%>
+                                            <%--</div>--%>
+                                            <%--<!--/span-->--%>
+                                            <%--<div class="col-md-6">--%>
+                                            <%--<div class="form-group">--%>
+
+                                            <%--<label class="control-label col-md-3">کد ترم</label>--%>
+                                            <%--<div class="col-md-9">--%>
+                                            <%--<input type="text" class="form-control" placeholder="کد ترم" disabled>--%>
+
+                                            <%--</div>--%>
+
+                                            <%--</div>--%>
+                                            <%--</div>--%>
+                                            <%--<!--/span-->--%>
+                                            <%--</div>--%>
+                                            <!--/row-->
+
+                                            <!-- <h3 class="form-section">Address</h3> -->
+                                            <!--/row-->
+
+
+
+                                            <!--/row-->
+
+                                            <!--/row-->
+                                        </div>
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-offset-3 col-md-9">
+                                                            <button type="submit" class="btn green">ارسال</button>
+                                                            <button type="button" class="btn default">لغو</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6"> </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- END FORM-->
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+
+
+                            <div class="portlet light bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-equalizer font-red-sunglo"></i>
+                                                    <span class="caption-subject font-red-sunglo bold uppercase">فرم
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                        <a href="" class="reload"> </a>
+                                        <!-- <a href="" class="remove"> </a> -->
+                                    </div>
+                                </div>
+                                <div class="portlet-body form">
+                                    <!-- BEGIN FORM-->
+                                    <form action="DeletePre" method="post" class="form-horizontal">
+                                        <div class="form-body">
+                                            <h3 class="form-section" style="font-family: 'nasim'">فرم حذف پیش نیاز</h3>
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3"> کد انتخاب</label>
+                                                        <div class="col-md-9">
+                                                            <input name="Code" type="number" class="form-control" placeholder="کد انتخاب">
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+
+                                                <!--/span-->
+                                            </div>
+
+
+
+
                                         </div>
                                         <div class="form-actions">
                                             <div class="row">
